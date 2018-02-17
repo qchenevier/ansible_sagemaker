@@ -1,1 +1,3 @@
 accessKeys.csv
+*.pem
+*.retry

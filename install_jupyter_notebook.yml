@@ -23,7 +23,7 @@
 
 - hosts: running
   remote_user: ubuntu
-  # gather_facts: False
+  gather_facts: False
   tasks:
     - name: test connection
       ping:

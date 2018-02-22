@@ -1,0 +1,9 @@
+- name: Start stopped instances
+  ec2:
+    instance_ids: "{{ item.value.ec2_id }}"
+    region: "{{ region }}"
+    state: running
+    wait: True
+    assign_public_ip: yes
+  with_dict: "{{ hostvars }}"
+  when: item.value.ec2_state == 'stopped'

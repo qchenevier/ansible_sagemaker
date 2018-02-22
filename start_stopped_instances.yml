@@ -1,0 +1,7 @@
+- hosts: localhost
+  gather_facts: False
+  vars:
+    region: eu-west-1
+  tasks:
+  - include_tasks: tasks/list_instances.yml state=['stopped']
+  - include_tasks: tasks/start_stopped_instances.yml state=['stopped']

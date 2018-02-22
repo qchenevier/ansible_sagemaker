@@ -1,0 +1,13 @@
+- hosts: localhost
+  gather_facts: False
+  vars:
+    region: eu-west-1
+    efs_security_groups: ['sg-a50094de']
+    efs_subnet_id: subnet-d521139c
+  tasks:
+  - include_tasks: tasks/list_instances.yml
+  - include_tasks: tasks/provision_EFS.yml
+    vars:
+      security_groups: "{{ efs_security_groups }}"
+      subnet_id: "{{ efs_subnet_id }}"
+  - include_tasks: tasks/list_instances.yml

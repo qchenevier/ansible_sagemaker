@@ -1,0 +1,13 @@
+- name: EFS provision
+  vars:
+    efs_name: default_efs
+    efs_tag_Name: default_efs
+  efs:
+    state: present
+    name: "{{ efs_name }}"
+    tags:
+        name: "{{ efs_tag_Name }}"
+        purpose: file-storage
+    targets:
+        - subnet_id: "{{ subnet_id }}"
+          security_groups: "{{ security_groups }}"

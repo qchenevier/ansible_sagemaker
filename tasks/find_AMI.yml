@@ -1,0 +1,15 @@
+- name: Search for the latest Ubuntu AMI
+  ec2_ami_find:
+    name: "ubuntu/images*"
+    # owner: 898082745236
+    sort: name
+    sort_order: descending
+    sort_end: 10
+    region: "{{ ec2_region }}"
+  register: ami_find
+
+- name: Print search results
+  debug:
+    msg: "{{ item }}"
+  with_items:
+    "{{ ami_find.results }}"

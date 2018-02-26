@@ -1,0 +1,4 @@
+- hosts: localhost
+  gather_facts: False
+  tasks:
+    - include_tasks: tasks/create_key.yml

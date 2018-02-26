@@ -1,0 +1,11 @@
+- name: create ec2 key
+  ec2_key:
+    name: "{{ key_name | default('example_key')}}"
+  register: ec2_key
+
+- name: save private key
+  copy:
+    content: "{{ ec2_key.key.private_key }}"
+    dest: "./{{ key_name | default('example_key')}}.pem"
+    mode: 0600
+  when: ec2_key.changed

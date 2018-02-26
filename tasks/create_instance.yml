@@ -1,0 +1,9 @@
+- name: create new instance
+  ec2:
+    image: "{{ ami_find.images[0].image_id }}"
+    instance_type: "{{ ec2_instance_type | default('t2.micro') }}"
+    key_name: "{{ key_name | default('example_key')}}"
+    region: "{{ region }}"
+    # network_interfaces:
+    wait: yes
+    count: 1

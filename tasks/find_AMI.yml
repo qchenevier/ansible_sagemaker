@@ -1,15 +1,12 @@
-- name: Search for the latest Ubuntu AMI
-  ec2_ami_find:
-    name: "ubuntu/images*"
-    # owner: 898082745236
-    sort: name
-    sort_order: descending
-    sort_end: 10
-    region: "{{ ec2_region }}"
+- name: Search for the latest Deep Learning Ubuntu AMI
+  ec2_ami_facts:
+    owners: 898082745236
+    filters:
+      name: "Deep Learning*Conda*Ubuntu*"
   register: ami_find
 
 - name: Print search results
   debug:
     msg: "{{ item }}"
   with_items:
-    "{{ ami_find.results }}"
+    "{{ ami_find.images }}"

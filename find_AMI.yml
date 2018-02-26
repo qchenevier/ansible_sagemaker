@@ -1,4 +1,4 @@
 - hosts: localhost
   gather_facts: False
   tasks:
-    - include_tasks: tasks/find_AMI.yml ec2_region=eu-west-1
+    - include_tasks: tasks/find_AMI.yml

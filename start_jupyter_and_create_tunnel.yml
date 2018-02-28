@@ -1,0 +1,19 @@
+- hosts: localhost
+  gather_facts: False
+  vars:
+    region: eu-west-1
+  tasks:
+    - include_tasks: tasks/list_instances.yml state=['running']
+    - debug:
+        msg: "{{ hostvars.values()|first }}"
+    - include_tasks: tasks/create_ssh_tunnel.yml
+      vars:
+        instance_port: 8888
+        instance_address: "{{ hostvars.values()|first|selectattr(ec2_public_dns_name) }}"
+        local_port: 8888
+        instance_command: jupyter notebook --NotebookApp.token=''
+        # instance_command: sleep 1
+        # with_dict: "{{ hostvars }}"
+        # when: item.value.ec2_state == 'running'
+  handlers:
+  - include_tasks: main/stop_ssh_tunnel.yml

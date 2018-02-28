@@ -1,0 +1,9 @@
+- hosts: localhost
+  gather_facts: False
+  vars:
+    region: eu-west-1
+  tasks:
+  - include_tasks: tasks/list_default_rules.yml
+  - include_tasks: tasks/get_localhost_IP.yml
+  - include_tasks: tasks/add_localhost_IP_to_default_rules.yml
+  - include_tasks: tasks/list_default_rules.yml

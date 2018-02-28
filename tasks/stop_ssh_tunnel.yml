@@ -1,0 +1,2 @@
+- name: stop ssh tunnel
+  shell: ps -ef | grep -iE -- "ss[h].*{{ local_port }}" | awk '{print $2}' | xargs kill -9

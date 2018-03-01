@@ -4,16 +4,18 @@
     region: eu-west-1
   tasks:
     - include_tasks: tasks/list_instances.yml state=['running']
+    # - include_tasks: tasks/add_running_instances_to_hosts.yml
     - debug:
-        msg: "{{ hostvars.values()|first }}"
+        msg: "{{ hostvars.values() | list | map(attribute='ec2_public_dns_name') | first}}"
     - include_tasks: tasks/create_ssh_tunnel.yml
       vars:
         instance_port: 8888
-        instance_address: "{{ hostvars.values()|first|selectattr(ec2_public_dns_name) }}"
+        instance_address: "{{ hostvars.values() | list | map(attribute='ec2_public_dns_name') | first}}"
         local_port: 8888
-        instance_command: jupyter notebook --NotebookApp.token=''
+        instance_user: ubuntu
+        instance_command: 'jupyter notebook --NotebookApp.token=''ZOU'''
         # instance_command: sleep 1
         # with_dict: "{{ hostvars }}"
         # when: item.value.ec2_state == 'running'
   handlers:
-  - include_tasks: main/stop_ssh_tunnel.yml
+  - include_tasks: tasks/stop_ssh_tunnel.yml

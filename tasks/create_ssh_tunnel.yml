@@ -1,8 +1,8 @@
-- name: clear any ssh tunnel
-  vars:
-    instance_port: 80
-  shell: ps -ef | grep -iE -- "ss[h].*{{ instance_port }}" | awk '{print $2}' | xargs kill -9
-  ignore_errors: yes
+# - name: clear any ssh tunnel
+#   vars:
+#     instance_port
+#   shell: ps -ef | grep -iE -- "ss[h].*{{ instance_port }}" | awk '{print $2}' | xargs kill -9
+#   ignore_errors: yes
 
 - debug:
     msg: "{{ instance_address }}"
@@ -11,5 +11,5 @@
   vars:
     instance_port: 80
     local_port: 80
-  shell: nohup ssh -N -p {{ instance_port }} {{ instance_address }} -L {{ instance_port }}:localhost:{{ local_port }} {{ instance_command }} &
-  notify: stop ssh tunnel
+  shell: nohup ssh -i example_key.pem -N {{instance_user}}@{{ instance_address }} -L {{ instance_port }}:localhost:{{ local_port }} {{ instance_command }} &
+  # notify: stop ssh tunnel

@@ -1,0 +1,7 @@
+- name: kill existing ssh tunnel from localhost on this port
+  vars:
+    instance_port: 80
+    local_port: 80
+  shell: pkill -f ''ssh.*{{ local_port }}''
+  delegate_to: localhost
+  ignore_errors: yes

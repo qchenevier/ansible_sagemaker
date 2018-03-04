@@ -1,0 +1,6 @@
+- name: start ssh tunnel from localhost
+  vars:
+    instance_port: 80
+    local_port: 80
+  shell: nohup ssh -i example_key.pem -N {{ ansible_user }}@{{ ansible_host }} -L {{ instance_port }}:localhost:{{ local_port }} &
+  delegate_to: localhost

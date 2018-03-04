@@ -3,8 +3,9 @@
     groups: running
     name: "{{ item.value.ansible_host }}"
     ansible_host: "{{ item.value.ec2_public_dns_name }}"
-    key_name: "{{ item.value.ec2_key_name }}"
-    key_file: "./{{ item.value.ec2_key_name}}.pem"
+    ansible_user: ubuntu
+    ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+    ansible_ssh_private_key_file: /home/quentin/Documents/coding/ansible_aws/{{ item.value.ec2_key_name}}.pem
     ansible_python_interpreter: /usr/bin/python3
   with_dict: "{{ hostvars }}"
   when: item.value.ec2_state == 'running'

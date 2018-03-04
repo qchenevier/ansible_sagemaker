@@ -2,5 +2,5 @@
   vars:
     instance_port: 80
     local_port: 80
-  shell: nohup ssh -i example_key.pem -N {{ ansible_user }}@{{ ansible_host }} -L {{ instance_port }}:localhost:{{ local_port }} &
+  shell: "nohup ssh -i {{ ansible_ssh_private_key_file }} -N {{ ansible_user }}@{{ ansible_host }} -L {{ instance_port }}:localhost:{{ local_port }} &"
   delegate_to: localhost

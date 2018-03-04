@@ -8,10 +8,16 @@
 
 - hosts: running
   gather_facts: False
-  vars:
-    instance_port: 8888
-    local_port: 8888
   tasks:
     - include_tasks: tasks/start_jupyter.yml
+      vars:
+        instance_port: 8888
+        local_port: 8888
     - include_tasks: tasks/stop_ssh_tunnel_from_localhost.yml
+      vars:
+        instance_port: 8888
+        local_port: 8888
     - include_tasks: tasks/create_ssh_tunnel_from_localhost.yml
+      vars:
+        instance_port: 8888
+        local_port: 8888

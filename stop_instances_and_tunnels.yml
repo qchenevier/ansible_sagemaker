@@ -14,6 +14,9 @@
     region: eu-west-1
   tasks:
     - include_tasks: tasks/stop_ssh_tunnel_from_localhost.yml
+      vars:
+        instance_port: 8888
+        local_port: 8888
     - name: stop instances
       ec2:
         instance_ids: "{{ ec2_id }}"

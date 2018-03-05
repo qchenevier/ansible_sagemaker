@@ -5,6 +5,7 @@ ansible-playbook -i ec2.py create_instance.yml
 # start
 ansible-playbook -i ec2.py list_instances.yml
 ansible-playbook -i ec2.py start_stopped_instances.yml
+ansible-playbook -i ec2.py add_localhost_IP_to_default_rules.yml
 ansible-playbook -i ec2.py start_jupyter_and_create_tunnel.yml
 
 # stop (run only one of the two options)

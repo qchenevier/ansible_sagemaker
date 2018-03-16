@@ -1,9 +1,0 @@
-- name: get current directory
-  command: pwd
-  register: pwd_output
-
-- set_fact: current_directory="{{ pwd_output.stdout}}"
-
-- name: print current directory
-  debug:
-    msg: "current directory is: {{ current_directory }}"

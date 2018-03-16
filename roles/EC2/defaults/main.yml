@@ -1,0 +1,5 @@
+AMI_owner: 898082745236
+AMI_name: "Deep Learning*Conda*Ubuntu*"
+instance_tags:
+  Name: deep_learning
+exact_count: 1

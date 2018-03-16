@@ -1,12 +1,12 @@
 - name: Search for the latest Deep Learning Ubuntu AMI
   ec2_ami_facts:
-    owners: 898082745236
+    owners: "{{ AMI_owner }}"
     filters:
-      name: "Deep Learning*Conda*Ubuntu*"
-  register: ami_find
+      name: "{{ AMI_name }}"
+  register: AMI_find
 
 - name: Print search results
   debug:
     msg: "{{ item.name }} | {{ item.image_id }}"
   with_items:
-    "{{ ami_find.images }}"
+    "{{ AMI_find.images }}"

@@ -1,8 +1,13 @@
 
-- name: Print all instances properties of Ansible groups in memory
+- name: Print instances status
   vars:
     state: ['pending', 'running', 'shutting-down', 'terminated', 'stopping', 'stopped']
   debug:
     msg: "Instance: {{ item.key }} [{{ ', '.join(item.value.group_names) }}] is {{ item.value.ec2_state }}{% if item.value.ec2_state == 'running' %} on address {{item.value.ec2_public_dns_name}}{% endif %}"
   with_dict: "{{ hostvars }}"
   when: item.value.ec2_state in state
+
+- name: Print all instances properties
+  debug:
+    msg: "{{ hostvars }}"
+    verbosity: 3

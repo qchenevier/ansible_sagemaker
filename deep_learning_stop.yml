@@ -1,0 +1,4 @@
+- hosts: localhost
+  gather_facts: False
+  roles:
+    - { role: EC2, exact_count: 0 }

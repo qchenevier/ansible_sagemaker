@@ -1,9 +1,3 @@
-- name: get current directory
-  command: pwd
-  register: pwd_output
-
-- set_fact: current_directory="{{ pwd_output.stdout}}"
-
 - name: Add running instances to hosts group
   add_host:
     groups: running

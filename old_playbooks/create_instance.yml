@@ -1,7 +1,0 @@
-- hosts: localhost
-  gather_facts: False
-  vars:
-    region: eu-west-1
-  tasks:
-    - include_tasks: tasks/find_AMI.yml
-    - include_tasks: tasks/create_instance.yml

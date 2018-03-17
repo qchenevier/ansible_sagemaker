@@ -1,5 +1,0 @@
-- hosts: localhost
-  tasks:
-    - include: tasks/create_ssh_tunnel.yml
-  handlers:
-    - tasks/stop_ssh_tunnel.yml

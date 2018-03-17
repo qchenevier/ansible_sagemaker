@@ -1,0 +1,3 @@
+- name: stop jupyter (if any)
+  command: pkill -f ''jupyter.*{{ jupyter_port }}''
+  ignore_errors: yes

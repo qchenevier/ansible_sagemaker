@@ -1,4 +1,4 @@
-- name: create new instance
+- name: create or terminate instances
   ec2:
     image: "{{ AMI_image_id }}"
     instance_type: "{{ EC2_instance_type }}"

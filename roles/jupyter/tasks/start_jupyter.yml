@@ -1,6 +1,2 @@
-- name: stop jupyter
-  command: pkill -f ''jupyter.*{{ jupyter_port }}''
-  ignore_errors: yes
-
 - name: start jupyter
   shell: nohup jupyter notebook --NotebookApp.token='''' --NotebookApp.port={{ jupyter_port }} </dev/null >/dev/null 2>&1 &

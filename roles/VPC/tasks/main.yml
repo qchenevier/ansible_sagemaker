@@ -1,5 +1,3 @@
 - include_tasks: list_default_rules.yml
 - include_tasks: get_localhost_IP.yml
 - include_tasks: add_localhost_IP_to_default_rules.yml
-- debug:
-    msg: "{{ hostvars }}"

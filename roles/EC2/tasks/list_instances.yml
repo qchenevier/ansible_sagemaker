@@ -1,4 +1,3 @@
-
 - name: Print instances status
   vars:
     state: ['pending', 'running', 'shutting-down', 'terminated', 'stopping', 'stopped']

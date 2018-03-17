@@ -1,4 +1,7 @@
 - hosts: localhost
   gather_facts: False
   roles:
-    - { role: EC2, exact_count: 0 }
+    - role: EC2
+      exact_count: 0
+    - role: ssh_tunnel
+      stop_ssh: True

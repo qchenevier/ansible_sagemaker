@@ -1,18 +1,15 @@
-- debug:
-    msg: "{{ hostvars }}"
 - include_tasks: list_instances.yml
 - include_tasks: find_AMI.yml
-  when: AMI_image_id is not defined and exact_count greaterthan 0
+  when: AMI_image_id is not defined and exact_count gt 0
 - include_tasks: create_or_terminate_instance.yml
 
+- include_tasks: get_current_directory.yml
+- include_tasks: refresh_inventory.yml
 - include_tasks: list_instances.yml
 - include_tasks: add_running_instances_to_hosts.yml
-  when: exact_count greaterthan 0
-
-- debug:
-    msg: "{{ hostvars }}"
+  when: exact_count gt 0
 
 - include_tasks: wait_for_ssh.yml
-  when: exact_count greaterthan 0
+  when: exact_count gt 0
 - include_tasks: list_instances.yml
-  when: exact_count greaterthan 0
+  when: exact_count gt 0

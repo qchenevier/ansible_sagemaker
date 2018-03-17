@@ -1,1 +1,2 @@
+- include_tasks: stop_jupyter.yml
 - include_tasks: start_jupyter.yml

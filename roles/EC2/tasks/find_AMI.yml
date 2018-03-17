@@ -11,5 +11,5 @@
   with_items:
     "{{ AMI_find.images }}"
 
-- name: Keep the first AMI result to use it
+- name: Keep the first AMI image_id
   set_fact: AMI_image_id="{{ AMI_find.images[0].image_id }}"

@@ -10,3 +10,6 @@
     msg: "{{ item.name }} | {{ item.image_id }}"
   with_items:
     "{{ AMI_find.images }}"
+
+- name: Keep the first AMI result to use it
+  set_fact: AMI_image_id="{{ AMI_find.images[0].image_id }}"

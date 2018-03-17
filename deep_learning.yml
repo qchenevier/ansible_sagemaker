@@ -3,3 +3,10 @@
   roles:
     - VPC
     - EC2
+
+- hosts: running
+  roles:
+    - jupyter
+    - role: ssh_tunnel
+      instance_port: "{{ jupyter_port }}"
+      local_port: "{{ jupyter_port }}"

@@ -1,0 +1,4 @@
+- include_tasks: create_ssh_tunnel_from_localhost.yml
+  when: not stop_ssh
+- include_tasks: stop_ssh_tunnel_from_localhost.yml
+  when: stop_ssh

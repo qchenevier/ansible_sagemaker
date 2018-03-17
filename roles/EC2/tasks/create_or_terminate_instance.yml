@@ -1,8 +1,8 @@
 - name: create new instance
   ec2:
-    image: "{{ AMI_find.images[0].image_id }}"
-    instance_type: "{{ ec2_instance_type | default('t2.micro') }}"
-    key_name: "{{ key_name | default('example_key')}}"
+    image: "{{ AMI_image_id }}"
+    instance_type: "{{ EC2_instance_type }}"
+    key_name: "{{ key_name }}"
     region: "{{ region }}"
     wait: yes
     exact_count: "{{ exact_count }}"

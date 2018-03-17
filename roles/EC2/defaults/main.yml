@@ -3,3 +3,5 @@ AMI_name: "Deep Learning*Conda*Ubuntu*"
 instance_tags:
   Name: deep_learning
 exact_count: 1
+EC2_instance_type: t2.micro
+key_name: example_key

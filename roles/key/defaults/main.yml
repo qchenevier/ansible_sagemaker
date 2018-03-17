@@ -1,0 +1,2 @@
+key_name: my_ssh_key
+key_directory: "{{ current_directory }}"

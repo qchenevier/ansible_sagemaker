@@ -1,0 +1,1 @@
+- include_tasks: get_current_directory.yml

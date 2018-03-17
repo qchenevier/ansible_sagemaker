@@ -5,7 +5,7 @@
     ansible_host: "{{ item.value.ec2_public_dns_name }}"
     ansible_user: ubuntu
     ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
-    ansible_ssh_private_key_file: "{{ current_directory }}/{{ item.value.ec2_key_name}}.pem"
+    ansible_ssh_private_key_file: "{{ key_directory }}/{{ item.value.ec2_key_name}}.pem"
     ansible_python_interpreter: /usr/bin/python3
   with_dict: "{{ hostvars }}"
   when: item.value.ec2_state == 'running'

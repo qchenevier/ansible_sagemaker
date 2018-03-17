@@ -1,8 +1,8 @@
-- name: get localhost IP
-  command: curl http://checkip.amazonaws.com/
-  register: curl_IP
-
-- set_fact: localhost_IP="{{ curl_IP.stdout}}"
+- uri:
+    url: http://checkip.amazonaws.com
+    return_content: yes
+  register: webpage
+- set_fact: "localhost_IP={{ webpage.content.rstrip() }}"
 
 - name: print localhost IP
   debug:

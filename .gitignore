@@ -1,5 +1,4 @@
 accessKeys.csv
 *.pem
 *.retry
-test.yml
 remote_filesystem

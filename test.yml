@@ -1,0 +1,9 @@
+- hosts: localhost
+  roles:
+    - VPC
+    - EC2
+
+- hosts: running
+  roles:
+    - EFS
+    - sshfs

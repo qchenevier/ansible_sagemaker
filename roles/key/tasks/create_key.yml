@@ -1,11 +1,27 @@
-- name: create ec2 key
+- set_fact: key_path="{{ key_directory }}/{{ key_name }}.pem"
+
+- name: check that the key local file exists
+  stat:
+    path: "{{ key_path }}"
+  register: stat_key
+
+- name: destroy ec2 key if no key local file
   ec2_key:
     name: "{{ key_name }}"
+    state: absent
+  ignore_errors: yes
+  when: stat_key.stat.exists == False
+
+- name: create ec2 key if necessary
+  ec2_key:
+    name: "{{ key_name }}"
+    force: False
   register: ec2_key
 
 - name: save private key
   copy:
     content: "{{ ec2_key.key.private_key }}"
-    dest: "{{ key_directory }}/{{ key_name }}.pem"
+    dest: "{{ key_path }}"
     mode: 0600
+    force: yes
   when: ec2_key.changed

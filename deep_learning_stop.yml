@@ -1,20 +1,6 @@
 - hosts: localhost
   roles:
     - role: EC2
-      action_type: list
-
-- hosts: running
-  roles:
-    - role: jupyter
-      action_type: stop
-    - role: ssh_tunnel
-      instance_port: "{{ jupyter_port }}"
-      local_port: "{{ jupyter_port }}"
       action_type: stop
     - role: sshfs
       action_type: umount
-
-- hosts: localhost
-  roles:
-    - role: EC2
-      action_type: stop

@@ -11,3 +11,4 @@
     - role: ssh_tunnel
       instance_port: "{{ jupyter_port }}"
       local_port: "{{ jupyter_port }}"
+    - sshfs

@@ -1,0 +1,17 @@
+- name: configure fuse
+  lineinfile:
+    dest: /etc/fuse.conf
+    line: "user_allow_other"
+    state: present
+  delegate_to: localhost
+  become: yes
+
+- name: create local directory
+  file:
+    path: "{{ local_sshfs_directory }}"
+    state: directory
+  delegate_to: localhost
+
+- name: mount sshfs from localhost
+  shell: "sshfs -o allow_other,default_permissions,IdentityFile={{ ansible_ssh_private_key_file }} {{ ansible_user }}@{{ ansible_host }}:{{ remote_sshfs_directory }} {{ local_sshfs_directory }}"
+  delegate_to: localhost

@@ -1,0 +1,4 @@
+- name: umount sshfs from localhost
+  shell: "umount -l {{ local_sshfs_directory }}"
+  delegate_to: localhost
+  become: yes

@@ -1,5 +1,6 @@
 - name: get current directory
   command: pwd
+  delegate_to: localhost
   register: pwd_output
 
 - set_fact: current_directory="{{ pwd_output.stdout}}"

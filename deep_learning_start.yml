@@ -1,11 +1,9 @@
 - hosts: localhost
-  gather_facts: False
   roles:
     - VPC
     - EC2
 
 - hosts: running
-  gather_facts: False
   roles:
     - jupyter
     - role: ssh_tunnel

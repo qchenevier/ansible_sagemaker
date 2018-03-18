@@ -2,3 +2,10 @@
   shell: "umount -l {{ local_sshfs_directory }}"
   delegate_to: localhost
   become: yes
+  ignore_errors: yes
+
+- name: delete local directory
+  file:
+    path: "{{ local_sshfs_directory }}"
+    state: absent
+  delegate_to: localhost

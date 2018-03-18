@@ -1,3 +1,6 @@
+- set_fact: exact_count=0
+  when: action_type == 'stop'
+
 - name: create or terminate instances
   ec2:
     image: "{{ AMI_image_id }}"

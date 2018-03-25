@@ -1,9 +1,6 @@
-- include_tasks: create_or_terminate_VPC.yml
-- include_tasks: list_VPC.yml
+- include_tasks: create_VPC.yml
 
-- include_tasks: create_or_terminate_subnet.yml
-- include_tasks: list_subnet.yml
+- include_tasks: create_subnet.yml
 
-- include_tasks: list_group_rules.yml
 - include_tasks: get_localhost_IP.yml
-- include_tasks: add_localhost_IP_to_group_rules.yml
+- include_tasks: create_group.yml

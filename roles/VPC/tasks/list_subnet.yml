@@ -2,6 +2,7 @@
   ec2_vpc_subnet_facts:
     filters:
       "tag:Name": "{{ subnet_name }}"
+  delegate_to: localhost
   register: subnet_facts
 
 - debug:

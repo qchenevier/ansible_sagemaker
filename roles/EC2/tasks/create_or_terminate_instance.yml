@@ -3,6 +3,8 @@
 
 - name: create or terminate instances
   ec2:
+    vpc_subnet_id: "{{ subnet.id }}"
+    group: "{{ group_name }}"
     image: "{{ AMI_image_id }}"
     instance_type: "{{ EC2_instance_type }}"
     key_name: "{{ key_name }}"

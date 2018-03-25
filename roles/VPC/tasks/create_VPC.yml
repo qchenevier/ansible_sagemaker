@@ -1,0 +1,23 @@
+- name: create VPC
+  ec2_vpc_net:
+    name: "{{ VPC_name }}"
+    cidr_block: "{{ VPC_CIDR }}"
+    region: "{{ region }}"
+    tags:
+      Name: "{{ VPC_name }}"
+    state: present
+  delegate_to: localhost
+  register: VPC_output
+
+- set_fact: VPC="{{ VPC_output.vpc}}"
+
+- debug: msg="{{ VPC }}"
+
+- name: create internet gateway
+  ec2_vpc_igw:
+    vpc_id: "{{ VPC.id }}"
+    region: "{{ region }}"
+    state: present
+  register: IGW
+
+- debug: msg="{{ IGW }}"

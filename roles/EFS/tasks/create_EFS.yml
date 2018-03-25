@@ -8,3 +8,4 @@
     targets:
       - subnet_id: "{{ subnet_id }}"
         security_groups: "{{ security_groups }}"
+  delegate_to: localhost

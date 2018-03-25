@@ -2,6 +2,7 @@
   ec2_group_facts:
     filters:
       group-name: "{{ group_name }}"
+  delegate_to: localhost
   register: ec2_groups
 
 - name: print groups

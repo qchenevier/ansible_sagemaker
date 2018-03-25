@@ -1,4 +1,4 @@
-- name: set group rules with localhost IP for inbound ssh protocol
+- name: create group with localhost IP for inbound ssh protocol
   ec2_group:
     name: "{{ group_name }}"
     description: "{{ group_name }} VPC security group"

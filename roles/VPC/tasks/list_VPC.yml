@@ -2,6 +2,7 @@
   ec2_vpc_net_facts:
     filters:
       "tag:Name": "{{ VPC_name }}"
+  delegate_to: localhost
   register: VPC_facts
 
 - name: create VPC variable

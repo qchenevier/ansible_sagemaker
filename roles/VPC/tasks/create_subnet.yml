@@ -1,4 +1,4 @@
-- name: create or terminate subnet
+- name: create subnet
   ec2_vpc_subnet:
     state: present
     vpc_id: "{{ VPC.id }}"
@@ -6,3 +6,9 @@
     cidr: "{{ subnet_CIDR }}"
     tags:
       Name: "{{ subnet_name }}"
+  delegate_to: localhost
+  register: subnet_output
+
+- set_fact: subnet="{{ subnet_output.subnet}}"
+
+- debug: msg="{{ subnet }}"

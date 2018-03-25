@@ -21,9 +21,13 @@
       to_port: 2049
       group_name: default
 
+
+
 - hosts: running
   roles:
+
   - jupyter
+
   - role: ssh_tunnel
     instance_port: "{{ jupyter_port }}"
     local_port: "{{ jupyter_port }}"

@@ -1,6 +1,15 @@
 - hosts: localhost
   roles:
+
   - common
-  - VPC
+
+  - role: VPC
+    group_name: default
+    inbound_rules:
+    - proto: tcp
+      from_port: 22
+      to_port: 22
+      cidr_ip: "{{ localhost_IP }}/32"
+
   - role: EC2
     action_type: stop

@@ -6,6 +6,8 @@
 - name: ensure mount directory exists
   file:
     path: "{{ EFS_mount_directory }}"
+    owner: ubuntu
+    group: ubuntu
     state: directory
     mode: 0755
 
@@ -16,6 +18,15 @@
     fstype: nfs4
     opts: nfsvers=4.1
     state: mounted
+  become: yes
+
+- name: ensure permissions on the directory are good
+  file:
+    path: "{{ EFS_mount_directory }}"
+    owner: ubuntu
+    group: ubuntu
+    state: directory
+    mode: 0755
   become: yes
 
 - name: get the contents of the mount

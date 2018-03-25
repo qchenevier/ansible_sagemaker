@@ -12,3 +12,18 @@
 - set_fact: subnet="{{ subnet_output.subnet}}"
 
 - debug: msg="{{ subnet }}"
+
+- name: set up public subnet route table
+  ec2_vpc_route_table:
+    vpc_id: "{{ VPC.id }}"
+    region: "{{ region }}"
+    tags:
+      Name: public
+    subnets:
+      - "{{ subnet.id }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gateway_id: "{{ gateway.gateway_id }}"
+  register: public_route_table
+
+- debug: msg="{{ public_route_table }}"

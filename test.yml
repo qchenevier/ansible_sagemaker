@@ -1,15 +1,34 @@
 - hosts: localhost
   roles:
-  - VPC
-  # - EC2
-  # tasks:
-  # - debug:
-  #     msg: "{{ hostvars }}"
 
-# - hosts: running
-#   roles:
-#     - jupyter
-#     - role: ssh_tunnel
-#       instance_port: "{{ jupyter_port }}"
-#       local_port: "{{ jupyter_port }}"
-#     - EFS
+  - common
+
+  - role: VPC
+    group_name: default
+    inbound_rules:
+    - proto: tcp
+      from_port: 22
+      to_port: 22
+      cidr_ip: "{{ localhost_IP }}/32"
+
+  - EC2
+
+  - role: VPC
+    group_name: default_EFS
+    inbound_rules:
+    - proto: tcp
+      from_port: 2049
+      to_port: 2049
+      group_name: default
+
+- hosts: running
+  roles:
+  - jupyter
+  - role: ssh_tunnel
+    instance_port: "{{ jupyter_port }}"
+    local_port: "{{ jupyter_port }}"
+
+  - role: EFS
+    targets:
+    - subnet_id: "{{ hostvars.localhost.subnet.id }}"
+      security_groups: "{{ hostvars.localhost.security_groups | selectattr('group_name', 'equalto', 'default_EFS') | map(attribute='group_id') | list }}"

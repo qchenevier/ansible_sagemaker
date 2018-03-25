@@ -12,7 +12,7 @@
 - name: ensure EFS volume is mounted
   mount:
     name: "{{ EFS_mount_directory }}"
-    src: "{{ EFS_file_system_id }}.efs.{{ region }}.amazonaws.com:/"
+    src: "{{ EFS.file_system_id }}.efs.{{ region }}.amazonaws.com:/"
     fstype: nfs4
     opts: nfsvers=4.1
     state: mounted

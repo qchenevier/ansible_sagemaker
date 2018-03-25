@@ -5,3 +5,4 @@ instance_tags:
 exact_count: 1
 EC2_instance_type: t2.micro
 action_type: start
+group_name: default

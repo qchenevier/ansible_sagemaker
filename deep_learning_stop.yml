@@ -1,7 +1,6 @@
 - hosts: localhost
   roles:
-    - VPC
-    - role: EC2
-      action_type: stop
-    - role: sshfs
-      action_type: umount
+  - common
+  - VPC
+  - role: EC2
+    action_type: stop

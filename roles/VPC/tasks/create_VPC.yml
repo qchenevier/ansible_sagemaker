@@ -18,6 +18,7 @@
     vpc_id: "{{ VPC.id }}"
     region: "{{ region }}"
     state: present
-  register: IGW
+  delegate_to: localhost
+  register: gateway
 
-- debug: msg="{{ IGW }}"
+- debug: msg="{{ gateway }}"

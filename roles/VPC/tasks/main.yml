@@ -1,6 +1,9 @@
 - include_tasks: create_VPC.yml
+  when: VPC is not defined or gateway is not defined
 
 - include_tasks: create_subnet.yml
+  when: subnet is not defined
 
-- include_tasks: get_localhost_IP.yml
 - include_tasks: create_group.yml
+
+- include_tasks: list_group.yml

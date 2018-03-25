@@ -1,13 +1,11 @@
-- name: create group with localhost IP for inbound ssh protocol
+- name: create group with localhost IP for inbound protocol
   ec2_group:
     name: "{{ group_name }}"
     description: "{{ group_name }} VPC security group"
-    rules:
-    - proto: tcp
-      from_port: 22
-      to_port: 22
-      cidr_ip: "{{ localhost_IP }}/32"
+    vpc_id: "{{ VPC.id }}"
+    rules: "{{ inbound_rules }}"
     rules_egress:
     - proto: -1
       cidr_ip: 0.0.0.0/0
   delegate_to: localhost
+  register: group_output

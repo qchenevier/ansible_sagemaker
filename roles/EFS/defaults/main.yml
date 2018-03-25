@@ -4,6 +4,3 @@ EFS_tag_Name: default_EFS
 nfs_package: nfs-common # nfs-utils on RHEL/CentOS/Amazon Linux
 EFS_file_system_id: fs-6246cfab
 EFS_mount_directory: /home/ubuntu/EFS/
-
-subnet_id: 
-security_groups: [ "{{}}" ]

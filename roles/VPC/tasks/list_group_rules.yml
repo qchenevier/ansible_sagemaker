@@ -1,14 +1,14 @@
-- name: get properties of default group
+- name: gather group facts
   ec2_group_facts:
     filters:
-      group-name: default
+      group-name: "{{ group_name }}"
   register: ec2_groups
 
-- name: print security group
+- name: print groups
   debug:
     msg: "{{ ec2_groups.security_groups }}"
 
-- name: print default rules
+- name: print groups rules
   debug:
     msg: "group named '{{ item.group_name }}' with id '{{ item.group_id }}' for IP ranges:{% for permission in item.ip_permissions%} {{ permission.ip_ranges }}{% endfor %}"
   with_items: "{{ ec2_groups.security_groups }}"

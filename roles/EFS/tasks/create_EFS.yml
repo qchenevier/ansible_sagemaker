@@ -1,0 +1,10 @@
+- name: create EFS
+  efs:
+    state: present
+    name: "{{ EFS_name }}"
+    tags:
+      name: "{{ EFS_tag_Name }}"
+      purpose: file-storage
+    targets:
+      - subnet_id: "{{ subnet_id }}"
+        security_groups: "{{ security_groups }}"

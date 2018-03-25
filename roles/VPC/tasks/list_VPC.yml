@@ -1,0 +1,13 @@
+- name: gather VPC facts
+  ec2_vpc_net_facts:
+    filters:
+      "tag:Name": "{{ VPC_name }}"
+  register: VPC_facts
+
+- name: create VPC variable
+  set_fact:
+    VPC: "{{VPC_facts.vpcs[0]}}"
+
+- name: print VPC variable
+  debug:
+    msg: "{{ VPC }}"

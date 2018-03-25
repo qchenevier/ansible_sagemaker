@@ -1,0 +1,7 @@
+VPC_name: default
+VPC_CIDR: 10.10.0.0/16
+
+subnet_name: default
+subnet_CIDR: 10.10.0.0/24
+
+group_name: default

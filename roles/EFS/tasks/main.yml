@@ -1,26 +1,2 @@
-- name: ensure NFS is installed
-  package:
-    name: "{{ nfs_package }}"
-    state: present
-
-- name: ensure mount directory exists
-  file:
-    path: "{{ EFS_mount_directory }}"
-    state: directory
-    mode: 0755
-
-- name: ensure EFS volume is mounted
-  mount:
-    name: "{{ EFS_mount_directory }}"
-    src: "{{ EFS_file_system_id }}.efs.{{ region }}.amazonaws.com:/"
-    fstype: nfs4
-    opts: nfsvers=4.1
-    state: mounted
-  become: yes
-
-- name: get the contents of the mount
-  command: "ls -lah {{ EFS_mount_directory }}"
-  register: efs_contents
-
-- name: print the contents
-  debug: var=efs_contents
+- include_tasks: create_EFS.yml
+- include_tasks: mount_EFS.yml

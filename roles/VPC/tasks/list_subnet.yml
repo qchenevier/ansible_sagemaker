@@ -1,0 +1,13 @@
+- name: list subnet facts
+  ec2_vpc_subnet_facts:
+    filters:
+      "tag:Name": "{{ subnet_name }}"
+  register: subnet_facts
+
+- debug:
+    msg: "{{ subnet_facts }}"
+
+- set_fact: "subnet={{subnet_facts.subnets[0]}}"
+
+- debug:
+    msg: "{{ subnet }}"

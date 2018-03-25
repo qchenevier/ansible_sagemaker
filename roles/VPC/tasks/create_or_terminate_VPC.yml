@@ -1,0 +1,8 @@
+- name: create VPC
+  ec2_vpc_net:
+    name: "{{ VPC_name }}"
+    cidr_block: "{{ VPC_CIDR }}"
+    region: "{{ region }}"
+    tags:
+      Name: "{{ VPC_name }}"
+  register: VPC

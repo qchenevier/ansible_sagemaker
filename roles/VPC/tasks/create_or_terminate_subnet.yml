@@ -1,0 +1,8 @@
+- name: create or terminate subnet
+  ec2_vpc_subnet:
+    state: present
+    vpc_id: "{{ VPC.id }}"
+    az: "{{ availability_zone }}"
+    cidr: "{{ subnet_CIDR }}"
+    tags:
+      Name: "{{ subnet_name }}"

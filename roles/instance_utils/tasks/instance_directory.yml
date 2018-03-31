@@ -1,0 +1,13 @@
+- name: delete existing instance directory
+  file:
+    path: instance/
+    state: absent
+  delegate_to: localhost
+  ignore_errors: yes
+
+- name: create instance directory
+  file:
+    path: instance/
+    state: directory
+  delegate_to: localhost
+  when: action_type == 'create'

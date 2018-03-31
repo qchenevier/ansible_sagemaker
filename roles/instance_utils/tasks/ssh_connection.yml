@@ -1,0 +1,6 @@
+- name: create ssh connection script
+  template:
+    src: connect_ssh.j2
+    dest: instance/connect_ssh.sh
+    mode: "u=rwx,g=rx,o=rx"
+  delegate_to: localhost

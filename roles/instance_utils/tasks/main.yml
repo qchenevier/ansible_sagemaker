@@ -1,0 +1,7 @@
+- include_tasks: instance_directory.yml
+
+- include_tasks: ssh_connection.yml
+  when: action_type == 'create'
+
+- include_tasks: remote_ftp.yml
+  when: action_type == 'create'

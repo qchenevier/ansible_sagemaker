@@ -1,0 +1,8 @@
+{
+    "protocol": "sftp",
+    "host": "{{ ansible_host }}", // string - Hostname or IP address of the server. Default: 'localhost'
+    "port": 22, // integer - Port number of the server. Default: 22
+    "user": "{{ ansible_user }}", // string - Username for authentication. Default: (none)
+    "remote": "{{ EFS_mount_directory }}", // try to use absolute paths starting with /
+    "privatekey": "{{ ansible_ssh_private_key_file }}" // string - Absolute path to the private key file (in OpenSSH format). Default: (none)
+}

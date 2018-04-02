@@ -3,6 +3,7 @@ AMI_name: "Deep Learning*Conda*Ubuntu*"
 instance_tags:
   Name: deep_learning
 exact_count: 1
-EC2_instance_type: t2.micro
+EC2_instance_type: m5.large
+# EC2_instance_type: t2.micro
 action_type: start
 group_name: default

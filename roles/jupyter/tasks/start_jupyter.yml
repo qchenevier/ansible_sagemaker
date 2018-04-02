@@ -1,2 +1,2 @@
 - name: start jupyter
-  shell: nohup jupyter notebook --NotebookApp.token='''' --NotebookApp.port={{ jupyter_port }} </dev/null >/dev/null 2>&1 &
+  shell: source activate python3 && nohup jupyter notebook --NotebookApp.token='''' --NotebookApp.port={{ jupyter_port }} </dev/null >/dev/null 2>&1 &

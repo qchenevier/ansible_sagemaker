@@ -1,0 +1,10 @@
+- name: get localhost home directory
+  local_action: command echo ~
+  register: echo_home
+
+- set_fact: localhost_home="{{ echo_home.stdout }}"
+
+- name: copy localhost aws credentials to remote
+  copy:
+    src: "{{ localhost_home }}/.aws"
+    dest: "/home/{{ ansible_user }}/"

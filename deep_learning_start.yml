@@ -37,4 +37,5 @@
     - subnet_id: "{{ hostvars.localhost.subnet.id }}"
       security_groups: "{{ hostvars.localhost.security_groups | selectattr('group_name', 'equalto', 'default_EFS') | map(attribute='group_id') | list }}"
 
-  - role: instance_utils
+  - instance_utils
+  - aws_credentials

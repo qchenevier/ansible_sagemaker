@@ -1,5 +1,10 @@
 - hosts: localhost
   tasks:
-  - s3_bucket:
-      name: insighters.servant
-      region: "{{ region }}"
+  - name: get localhost home directory
+    local_action: command echo ~
+    register: localhost_home
+  - debug: msg="{{localhost_home.stdout}}"
+  # tasks:
+  # - s3_bucket:
+  #     name: insighters.servant
+  #     region: "{{ region }}"

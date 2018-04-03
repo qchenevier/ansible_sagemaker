@@ -1,2 +1,3 @@
 jupyter_port: 8888
+jupyter_token: insighters
 action_type: start

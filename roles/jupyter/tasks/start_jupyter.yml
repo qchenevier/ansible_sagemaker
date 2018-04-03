@@ -1,2 +1,4 @@
 - name: start jupyter
-  shell: source activate python3 && nohup jupyter notebook --NotebookApp.token='''' --NotebookApp.port={{ jupyter_port }} </dev/null >/dev/null 2>&1 &
+  shell: source /home/{{ ansible_user }}/anaconda3/bin/activate python3 && nohup jupyter notebook --NotebookApp.token=''{{ jupyter_token }}'' --NotebookApp.port={{ jupyter_port }} </dev/null >/home/{{ ansible_user }}/jupyter.log 2>&1 &
+  args:
+    executable: bash

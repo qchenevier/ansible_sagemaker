@@ -1,5 +1,6 @@
 AMI_owner: 898082745236
-AMI_name: "Deep Learning*Conda*Ubuntu*"
+AMI_name: "Deep Learning*Conda*Amazon*"
+EC2_user: ec2-user
 instance_tags:
   Name: deep_learning
 exact_count: 1

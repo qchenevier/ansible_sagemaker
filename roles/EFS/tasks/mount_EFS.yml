@@ -6,8 +6,8 @@
 - name: ensure mount directory exists
   file:
     path: "{{ EFS_mount_directory }}"
-    owner: ubuntu
-    group: ubuntu
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: directory
     mode: 0755
 
@@ -23,8 +23,8 @@
 - name: ensure permissions on the directory are good
   file:
     path: "{{ EFS_mount_directory }}"
-    owner: ubuntu
-    group: ubuntu
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
     state: directory
     mode: 0755
   become: yes

@@ -1,1 +1,3 @@
 action_type: create
+
+EFS_mount_directory: "/home/{{ ansible_user }}/EFS/"

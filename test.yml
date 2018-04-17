@@ -1,10 +1,41 @@
 - hosts: localhost
-  tasks:
-  - name: get localhost home directory
-    local_action: command echo ~
-    register: localhost_home
-  - debug: msg="{{localhost_home.stdout}}"
-  # tasks:
-  # - s3_bucket:
-  #     name: insighters.servant
-  #     region: "{{ region }}"
+  roles:
+
+  - common
+
+  - role: VPC
+    group_name: default
+    inbound_rules:
+    - proto: tcp
+      from_port: 22
+      to_port: 22
+      cidr_ip: "{{ localhost_IP }}/32"
+
+  - EC2
+
+  - role: VPC
+    group_name: default_EFS
+    inbound_rules:
+    - proto: tcp
+      from_port: 2049
+      to_port: 2049
+      group_name: default
+
+
+
+- hosts: running
+  roles:
+
+  - instance_utils
+  - aws_credentials
+
+  - role: EFS
+    targets:
+    - subnet_id: "{{ hostvars.localhost.subnet.id }}"
+      security_groups: "{{ hostvars.localhost.security_groups | selectattr('group_name', 'equalto', 'default_EFS') | map(attribute='group_id') | list }}"
+
+  - jupyter
+
+  - role: ssh_tunnel
+    instance_port: "{{ jupyter_port }}"
+    local_port: "{{ jupyter_port }}"

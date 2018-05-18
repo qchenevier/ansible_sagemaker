@@ -1,11 +1,11 @@
 - name: create remote_ftp directory
   file:
-    path: instance/remote_ftp
+    path: "{{ instance_utils_directory }}/remote_ftp"
     state: directory
   delegate_to: localhost
 
 - name: create remote_ftp config file
   template:
     src: ftpconfig.j2
-    dest: instance/remote_ftp/.ftpconfig
+    dest: "{{ instance_utils_directory }}/remote_ftp/.ftpconfig"
   delegate_to: localhost

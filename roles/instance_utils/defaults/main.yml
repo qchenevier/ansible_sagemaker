@@ -1,3 +1,4 @@
 action_type: create
+instance_utils_directory: ../ansible_aws_instance/
 
 EFS_mount_directory: "/home/{{ ansible_user }}/EFS/"

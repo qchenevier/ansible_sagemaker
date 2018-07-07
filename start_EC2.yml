@@ -4,15 +4,12 @@
 
 - hosts: running
   roles:
-
   - instance_utils
   - aws_credentials
   - jupyter
-
   - role: ssh_tunnel
     instance_port: "{{ jupyter_port }}"
     local_port: "{{ jupyter_port }}"
-
   - role: EFS
     targets:
     - subnet_id: "{{ hostvars.localhost.subnet.id }}"

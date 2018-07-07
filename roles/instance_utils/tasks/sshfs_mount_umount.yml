@@ -1,0 +1,13 @@
+- name: create sshfs mount script
+  template:
+    src: mount_sshfs.j2
+    dest: "{{ instance_utils_directory }}/mount_sshfs.sh"
+    mode: "u=rwx,g=rx,o=rx"
+  delegate_to: localhost
+
+- name: create sshfs umount script
+  template:
+    src: umount_sshfs.j2
+    dest: "{{ instance_utils_directory }}/umount_sshfs.sh"
+    mode: "u=rwx,g=rx,o=rx"
+  delegate_to: localhost

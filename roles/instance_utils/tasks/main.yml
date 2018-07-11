@@ -8,3 +8,6 @@
 
 - include_tasks: sshfs_mount_umount.yml
   when: action_type == 'create'
+
+- include_tasks: ssh_tunnel.yml
+  when: action_type == 'create'

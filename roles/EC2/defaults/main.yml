@@ -5,7 +5,9 @@ EC2_user: ec2-user
 instance_tags:
   Name: deep_learning
 exact_count: 1
-EC2_instance_type: m5.2xlarge
+EC2_instance_type: m5.12xlarge
+# EC2_instance_type: m5.4xlarge
+# EC2_instance_type: x1e.2xlarge
 # EC2_instance_type: m5.large
 # EC2_instance_type: t2.micro
 action_type: start

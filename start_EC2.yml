@@ -4,13 +4,13 @@
 
 - hosts: running
   roles:
+  - role: EFS
+    targets:
+    - subnet_id: "{{ hostvars.localhost.subnet.id }}"
+      security_groups: "{{ hostvars.localhost.security_groups | selectattr('group_name', 'equalto', 'default_EFS') | map(attribute='group_id') | list }}"
   - instance_utils
   - aws_credentials
   - jupyter
   - role: ssh_tunnel
     instance_port: "{{ jupyter_port }}"
     local_port: "{{ jupyter_port }}"
-  - role: EFS
-    targets:
-    - subnet_id: "{{ hostvars.localhost.subnet.id }}"
-      security_groups: "{{ hostvars.localhost.security_groups | selectattr('group_name', 'equalto', 'default_EFS') | map(attribute='group_id') | list }}"

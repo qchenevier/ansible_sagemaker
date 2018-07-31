@@ -4,6 +4,7 @@
     state: absent
   delegate_to: localhost
   ignore_errors: yes
+  when: action_type != 'create'
 
 - name: create instance directory
   file:

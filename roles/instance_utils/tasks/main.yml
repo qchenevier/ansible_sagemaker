@@ -11,3 +11,6 @@
 
 - include_tasks: ssh_tunnel.yml
   when: action_type == 'create'
+
+- include_tasks: install_htop.yml
+  when: action_type == 'create'

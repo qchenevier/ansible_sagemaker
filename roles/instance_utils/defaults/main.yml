@@ -1,7 +1,7 @@
 action_type: create
-instance_utils_directory: ../ansible_aws_instance/
+instance_utils_directory: ../ansible_aws_instance
 
-EFS_mount_directory: "/home/{{ ansible_user }}/EFS/"
+EFS_mount_directory: "/home/{{ ansible_user }}/EFS"
 
-local_sshfs_directory: "{{ instance_utils_directory }}remote_filesystem/"
-remote_sshfs_directory: "/home/{{ ansible_user }}/"
+local_sshfs_directory: "{{ instance_utils_directory }}/remote_filesystem"
+remote_sshfs_directory: "/home/{{ ansible_user }}"

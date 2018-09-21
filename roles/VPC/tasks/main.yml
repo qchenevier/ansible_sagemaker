@@ -5,5 +5,3 @@
   when: subnet is not defined
 
 - include_tasks: create_group.yml
-
-- include_tasks: list_group.yml

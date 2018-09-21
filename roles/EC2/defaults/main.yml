@@ -5,7 +5,14 @@ EC2_user: ec2-user
 instance_tags:
   Name: deep_learning
 exact_count: 1
-EC2_instance_type: m5.large
-# EC2_instance_type: t2.micro
+#
+# EC2_instance_type: m5.4xlarge
+# spot_price: 1
+
+# EC2_instance_type: cr1.8xlarge
+# spot_price: 1
+
+EC2_instance_type: p2.xlarge
+spot_price: 1
+
 action_type: start
-group_name: default

@@ -2,6 +2,7 @@
   roles:
 
   - common
+  - key
 
   - role: VPC
     group_name: default
@@ -11,8 +12,10 @@
       to_port: 22
       cidr_ip: "{{ localhost_IP }}/32"
 
-  - role: EC2
-    action_type: stop
-
-  - role: instance_utils
-    action_type: delete
+  - role: VPC
+    group_name: default_EFS
+    inbound_rules:
+    - proto: tcp
+      from_port: 2049
+      to_port: 2049
+      group_name: default

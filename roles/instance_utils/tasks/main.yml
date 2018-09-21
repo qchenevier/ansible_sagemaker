@@ -5,3 +5,12 @@
 
 - include_tasks: remote_ftp.yml
   when: action_type == 'create'
+
+- include_tasks: sshfs_mount_umount.yml
+  when: action_type == 'create'
+
+- include_tasks: ssh_tunnel.yml
+  when: action_type == 'create'
+
+- include_tasks: install_htop.yml
+  when: action_type == 'create'

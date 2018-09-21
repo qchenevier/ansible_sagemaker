@@ -1,0 +1,5 @@
+- name: ensure htop is installed
+  package:
+    name: htop
+    state: present
+  become: yes

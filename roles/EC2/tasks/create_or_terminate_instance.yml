@@ -1,5 +1,5 @@
 - set_fact: exact_count=0
-  when: action_type == 'stop'
+  when: state == 'stopped'
 
 - name: create or terminate instances
   ec2:

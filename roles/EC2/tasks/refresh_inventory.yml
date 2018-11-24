@@ -1,4 +1,4 @@
 - name: Refresh EC2 cache
-  command: "{{ current_directory }}/ec2.py --refresh-cache"
+  command: "{{ playbook_dir }}/ec2.py --refresh-cache"
 - name: Refresh in-memory EC2 cache
   meta: refresh_inventory

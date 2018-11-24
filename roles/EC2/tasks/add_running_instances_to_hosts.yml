@@ -2,11 +2,10 @@
   add_host:
     groups: running
     name: "{{ item.value.ansible_host }}"
+    ansible_user: "{{ remote_user }}"
     ansible_host: "{{ item.value.ec2_public_dns_name }}"
-    ansible_user: "{{ EC2_user }}"
     ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
-    ansible_ssh_private_key_file: "{{ current_directory }}/{{ item.value.ec2_key_name}}.pem"
-    # ansible_python_interpreter: /usr/bin/python3
+    ansible_ssh_private_key_file: "{{ playbook_dir }}/{{ item.value.ec2_key_name}}.pem"
     region: "{{ item.value.ec2_region }}"
   with_dict: "{{ hostvars }}"
   when: item.value.ec2_state == 'running'

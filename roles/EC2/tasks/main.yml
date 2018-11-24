@@ -4,14 +4,14 @@
 - include_tasks: find_AMI.yml
   when: AMI_image_id is not defined
 - include_tasks: create_or_terminate_instance.yml
-  when: (action_type == 'start') or (action_type == 'stop')
+  when: (state == 'running') or (state == 'stopped')
 
 - include_tasks: refresh_inventory.yml
 - include_tasks: list_instances.yml
 - include_tasks: add_running_instances_to_hosts.yml
-  when: action_type != 'stop'
+  when: state != 'stopped'
 
 - include_tasks: wait_for_ssh.yml
-  when: action_type == 'start'
+  when: state == 'running'
 - include_tasks: list_instances.yml
-  when: action_type == 'start'
+  when: state == 'running'

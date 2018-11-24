@@ -1,11 +1,11 @@
 - hosts: localhost
   roles:
-  - { role: EC2, action_type: start }
+  - { role: EC2, state: running }
 
 - hosts: running
   roles:
-  - { role: instance_utils, action_type: create }
+  - { role: instance_utils, state: present }
   - aws_credentials
   - jupyter
-  - { role: ssh_tunnel, action_type: start }
+  - { role: ssh_tunnel, state: running }
   - gitlab

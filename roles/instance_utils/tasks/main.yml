@@ -1,16 +1,16 @@
 - include_tasks: instance_directory.yml
 
 - include_tasks: ssh_connection.yml
-  when: action_type == 'create'
+  when: state == 'present'
 
 - include_tasks: remote_ftp.yml
-  when: action_type == 'create'
+  when: state == 'present'
 
 - include_tasks: sshfs_mount_umount.yml
-  when: action_type == 'create'
+  when: state == 'present'
 
 - include_tasks: ssh_tunnel.yml
-  when: action_type == 'create'
+  when: state == 'present'
 
 - include_tasks: install_htop.yml
-  when: action_type == 'create'
+  when: state == 'present'

@@ -1,4 +1,4 @@
 - hosts: localhost
   roles:
-  - { role: EC2, action_type: stop }
-  - { role: instance_utils, action_type: delete }
+  - { role: EC2, state: stopped }
+  - { role: instance_utils, state: absent }

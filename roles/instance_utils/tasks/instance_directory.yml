@@ -4,11 +4,11 @@
     state: absent
   delegate_to: localhost
   ignore_errors: yes
-  when: action_type != 'create'
+  when: state != 'present'
 
 - name: create instance directory
   file:
     path: "{{ instance_utils_directory }}"
     state: directory
   delegate_to: localhost
-  when: action_type == 'create'
+  when: state == 'present'

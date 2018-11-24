@@ -1,2 +1,0 @@
-- include_tasks: create_EFS.yml
-- include_tasks: mount_EFS.yml

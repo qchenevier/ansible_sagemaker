@@ -1,3 +1,0 @@
-local_sshfs_directory: "{{ current_directory }}/remote_filesystem/"
-remote_sshfs_directory: /home/ubuntu
-action_type: mount

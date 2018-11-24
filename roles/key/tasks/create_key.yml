@@ -1,5 +1,3 @@
-- set_fact: key_path="{{ current_directory }}/{{ key_name }}.pem"
-
 - name: check that the key local file exists
   stat:
     path: "{{ key_path }}"

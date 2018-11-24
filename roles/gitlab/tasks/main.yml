@@ -1,0 +1,9 @@
+- name: install git
+  package:
+    name: git
+
+- name: clone git repo
+  git:
+    repo: "https://oauth2:{{ gitlab_token }}@gitlab.com/{{ gitlab_repo_vendor }}/{{ gitlab_repo_name }}.git"
+    dest: "{{ remote_home }}/{{ gitlab_repo_name }}"
+    version: "{{ gitlab_branch }}"

@@ -1,9 +1,9 @@
 - hosts: localhost
   roles:
 
-  - common
   - key
 
+  - get_localhost_IP
   - role: VPC
     group_name: default
     inbound_rules:
@@ -11,11 +11,3 @@
       from_port: 22
       to_port: 22
       cidr_ip: "{{ localhost_IP }}/32"
-
-  - role: VPC
-    group_name: default_EFS
-    inbound_rules:
-    - proto: tcp
-      from_port: 2049
-      to_port: 2049
-      group_name: default

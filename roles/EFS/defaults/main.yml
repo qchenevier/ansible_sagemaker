@@ -1,7 +1,0 @@
-EFS_name: default_EFS
-EFS_tag_Name: default_EFS
-
-nfs_package: nfs-utils # on RHEL/CentOS/Amazon Linux
-# nfs_package: nfs-common # on ubuntu
-EFS_file_system_id: fs-6246cfab
-EFS_mount_directory: "/home/{{ ansible_user }}/EFS/"

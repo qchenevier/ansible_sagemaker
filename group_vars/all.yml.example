@@ -1,0 +1,34 @@
+region: eu-west-1
+availability_zone: eu-west-1a
+
+key_name: my_ssh_key
+key_path: "{{ playbook_dir }}/{{ key_name }}.pem"
+
+group_name: default
+subnet_name: default
+
+# AMI_owner: 898082745236
+# AMI_name: "Deep Learning*Amazon*7*"
+AMI_image_id: ami-0b032a0bf1cd05d3f
+EC2_user: ec2-user
+instance_tags:
+  Name: deep_learning
+exact_count: 1
+EC2_instance_type: m4.large
+spot_price: 1
+
+remote_user: "{{ EC2_user }}"
+remote_home: "/home/{{ remote_user }}"
+
+jupyter_port: 8888
+jupyter_token: insighters
+
+remote_port: "{{ jupyter_port }}"
+local_port: "{{ jupyter_port }}"
+
+gitlab_repo_name: REPO_NAME
+gitlab_repo_vendor: REPO_VENDOR
+gitlab_token: YOUR_TOKEN
+gitlab_branch: master
+
+instance_utils_directory: "{{ playbook_dir }}/../ansible_aws_instance"

@@ -7,4 +7,4 @@
 - name: copy localhost aws credentials to remote
   copy:
     src: "{{ localhost_home }}/.aws"
-    dest: "/home/{{ ansible_user }}/"
+    dest: "{{ remote_home }}/"

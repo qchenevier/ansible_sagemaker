@@ -1,3 +1,0 @@
-- include_tasks: umount_sshfs_from_localhost.yml
-- include_tasks: mount_sshfs_from_localhost.yml
-  when: action_type == 'mount'

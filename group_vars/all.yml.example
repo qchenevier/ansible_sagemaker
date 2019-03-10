@@ -1,34 +1,56 @@
-region: eu-west-1
-availability_zone: eu-west-1a
+#############################
+### DEFAULT CONFIGURATION ###
+### DO NOT EDIT THIS PART ###
 
+# ssh
 key_name: my_ssh_key
 key_path: "{{ playbook_dir }}/{{ key_name }}.pem"
 
+# VPC
 group_name: default
 subnet_name: default
 
-# AMI_owner: 898082745236
-# AMI_name: "Deep Learning*Amazon*7*"
-AMI_image_id: ami-0b032a0bf1cd05d3f
+# EC2
 EC2_user: ec2-user
 instance_tags:
   Name: deep_learning
 exact_count: 1
-EC2_instance_type: m4.large
-spot_price: 1
-
 remote_user: "{{ EC2_user }}"
 remote_home: "/home/{{ remote_user }}"
 
+# Jupyter
 jupyter_port: 8888
-jupyter_token: insighters
-
 remote_port: "{{ jupyter_port }}"
 local_port: "{{ jupyter_port }}"
 
+# Utils
+instance_utils_directory: "{{ playbook_dir }}/../ansible_aws_instance"
+
+########################################
+###       MANUAL CONFIGURATION       ###
+### EDIT THIS PART TO FIT YOUR NEEDS ###
+
+# EC2 Region
+region: eu-west-1
+availability_zone: eu-west-1a
+
+# EC2 AMI with an image id
+AMI_image_id: ami-0b032a0bf1cd05d3f
+
+# EC2 AMI with AMI search
+# (comment the image_id above if you wish to use this)
+# AMI_owner: 898082745236
+# AMI_name: "Deep Learning*Amazon*7*"
+
+# EC2 instance type & pricing
+EC2_instance_type: m4.large
+spot_price: 1
+
+# Jupyter
+jupyter_token: this_is_a_simple_token
+
+# Git repository (currently only with gitlab)
 gitlab_repo_name: REPO_NAME
 gitlab_repo_vendor: REPO_VENDOR
 gitlab_token: YOUR_TOKEN
 gitlab_branch: master
-
-instance_utils_directory: "{{ playbook_dir }}/../ansible_aws_instance"

@@ -25,6 +25,7 @@ cp group_vars/all.yml.example group_vars/all.yml
 Edit the created `all.yml` file to fit your needs.
 
 > ⚠️ This is where you provide the maximum pricing you wish to pay
+
 > ⚠️ You have to provide a valid gitlab token, in order to clone the git repository
 
 ### Configuring EC2 access

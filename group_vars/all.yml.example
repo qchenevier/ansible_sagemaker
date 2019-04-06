@@ -24,7 +24,7 @@ remote_port: "{{ jupyter_port }}"
 local_port: "{{ jupyter_port }}"
 
 # Utils
-instance_utils_directory: "{{ playbook_dir }}/../ansible_aws_instance"
+instance_utils_directory: "{{ playbook_dir }}/../ansible_sagemaker_instance"
 
 ########################################
 ###       MANUAL CONFIGURATION       ###
@@ -35,7 +35,7 @@ region: eu-west-1
 availability_zone: eu-west-1a
 
 # EC2 AMI with an image id
-AMI_image_id: ami-0b032a0bf1cd05d3f
+AMI_image_id: ami-0061ecbbc1cbd45f5
 
 # EC2 AMI with AMI search
 # (comment the image_id above if you wish to use this)
@@ -45,6 +45,7 @@ AMI_image_id: ami-0b032a0bf1cd05d3f
 # EC2 instance type & pricing
 EC2_instance_type: m4.large
 spot_price: 1
+volume_size: 256
 
 # Jupyter
 jupyter_token: this_is_a_simple_token
